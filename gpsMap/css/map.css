@@ -1,0 +1,325 @@
+
+
+html,body{
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+}
+
+#map {
+    width:-webkit-calc(100% - 120px); 
+    left: 120px;
+    /* width: 100%; */
+    height: 100%;
+    position: absolute;
+}
+
+.navbar{
+    position: absolute;
+    width: 120px;
+    height: 100%;
+    background-color: rgb(49, 161, 165);
+    z-index: 1;
+    padding: 0px;
+    color: white;
+}
+
+.navbar ul{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    top: 50px;
+    padding: 0px;
+}
+
+.navbar ul li {
+    list-style: none;
+    border-top: 1px solid grey;
+    border-bottom: 1px solid grey;
+    height: 100px;
+    line-height: 100px;
+    flex: 1;
+    width: 120px;
+    cursor: pointer;
+}
+
+.navbar ul li:hover {
+    color: blueviolet;
+}
+
+.navbar .trangle{
+    border-right: 10px solid white;
+    border-bottom: 7px solid transparent;
+    border-top: 7px solid transparent;
+    right: 0px;
+    position: absolute;
+    margin-top: calc(50% - 14px);
+}
+
+.workzone{
+    position: absolute;
+    left: 120px;
+    width: 200px;
+    background-color: white;
+    height: 100%;
+    z-index: 1;
+}
+
+#toolMenu {
+    float: left;
+    position: absolute;
+    top: 20px;
+    right: 50px;
+    z-index: 20;
+    border-radius: 3px;
+    box-shadow: 3px 3px 2px #8888;
+    background: white;
+}
+
+.checkbox {
+    left: 20px;
+}
+
+/**
+* 测量工具
+*/
+.tooltip {
+    position: relative;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+    color: white;
+    padding: 4px 8px;
+    opacity: 0.7;
+    white-space: nowrap;
+}
+
+.tooltip-measure {
+    opacity: 1;
+    font-weight: bold;
+}
+
+.tooltip-static {
+    background-color: #ffffff;
+    color: black;
+    border: 1px solid white;
+}
+
+.tooltip-measure:before,
+.tooltip-static:before {
+    border-top: 6px solid rgba(0, 0, 0, 0.5);
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    content: "";
+    position: absolute;
+    bottom: -6px;
+    margin-left: -7px;
+    left: 50%;
+}
+
+.tooltip-static:before {
+    border-top-color: #ffffff;
+}
+
+#scalebar {
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    z-index: 20;
+}
+
+.x-zoom-icons{
+    position: absolute;
+    z-index: 10;
+    left: 50px;
+    top: 100px;
+}
+ .x-zoom-icons button{
+    width: 80px;
+    height: 30px;
+    margin-left: 20px;
+}
+
+/* 右下角提示框 */
+.ol-attribution{
+    display: none;
+}
+
+/* 地图鹰眼 */
+.ol-custom-overviewmap,
+.ol-custom-overviewmap.ol-uncollapsible {
+  bottom: 0.5em;
+  left: auto;
+  right: 0.5em;
+  top: auto;
+}
+
+.ol-custom-overviewmap:not(.ol-collapsed)  {
+  border: 1px solid black;
+}
+
+.ol-custom-overviewmap .ol-overviewmap-map {
+  border: none;
+  width: 300px;
+}
+
+.ol-custom-overviewmap .ol-overviewmap-box {
+  border: 2px solid red;
+}
+
+.ol-custom-overviewmap:not(.ol-collapsed) button{
+    bottom: 0.5em;
+    left: 0;
+    right: auto;
+    top: auto;
+}
+
+.ol-rotate {
+    top: 170px;
+    right: 0;
+}
+
+/* 全屏 */
+#fullScreen{
+    padding: 0px;
+}
+
+.gps-tool-fullScreen{
+    padding: 0px;
+    position: relative;
+}
+
+.gps-tool-fullScreen button{
+    position: relative;
+    width: 30px;
+    height: 20px;
+    background-color: red;
+    margin: 0px;
+    padding: 0px;
+}
+
+/* 标注 */
+.isDisplay{
+    display: none;
+}
+
+.gps_label_popup{
+    float:left;
+    background: antiquewhite;
+    border-radius: 5px;
+    padding-bottom: 5px;
+    width: 350px;
+}
+
+.gps_label_popup input{
+    margin: 5px;
+    width: 280px;
+}
+
+#gps_label_popup_delete{
+    margin-left: 100px;
+}
+#gps_label_popup_save{
+    margin-left: 10px;
+}
+
+.gps_label_popup_title{
+    color:bisque;
+    background: black;
+    height: 30px;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+    opacity: 0.7;
+}
+
+#gps_label_popup_close{
+    margin-left: 210px;
+    color: black;
+}
+
+.btm_white_but{
+    z-index: 5;
+    width: 60px;
+    height: 29px;
+    position: relative;
+    line-height: 25px;
+    background: rgb(249, 249, 249);
+    border: 2px solid rgb(235, 235, 235) !important;
+    cursor:pointer;
+}
+
+.div_input_name{
+    text-align: center;
+    margin-top:5px;
+}
+
+.hidden{
+    display: none;
+}
+
+.overView-hide{
+    position: absolute;
+    bottom: 5px;
+    right: 270px;
+    background:rgb(124,154,190);
+    box-shadow: 1px 1px 1px #888888;
+    text-align: center;
+    width: 25px;
+    height: 20px;
+    font-size: 13px;
+    color: white;
+    font-weight: bold;
+    z-index: 200;
+}
+.overView-hide:hover{
+    box-shadow:2px 2px 2px #888888;
+    background-color: rgb(75,117,169);
+}
+.com-btn{
+    cursor: pointer;
+}
+
+/* 检索要素 */
+.search_feature_tooltip{
+    background: #ffffff;
+    border-radius: 3px;
+    padding: 2px;
+}
+
+/* 工具栏 */
+ul li{
+    list-style-type: none;
+}
+
+.title-common{
+    width: 80px;
+    height: 35px;
+    line-height: 35px;
+    text-align: center;
+    float: left;
+}
+
+.title-common:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+.ul-common{
+    width: 100%;
+    padding-left: 0px;
+    margin-top: 5px;
+    text-align: center;
+    background: white;
+    border-radius: 2px;
+}
+
+.ul-common li:hover{
+    cursor: pointer;
+    color: blue;
+}
+
+/* 隐藏放大缩小按钮 */
+.ol-zoom,.ol-zoom-extent{
+    display: none;
+}

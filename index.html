@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<title></title>
+     <!-- <link rel="stylesheet" type="text/css" href="js/gps.css"> -->
+     <script type="text/javascript" src="js/jquery-2.1.1.min.js"></script>
+     <script type="text/javascript" src="js/ol.js"></script>
+     <script type="text/javascript" src="js/bootstrap-4.0.0-dist/js/bootstrap.min.js"></script>
+     <link rel="stylesheet" type="text/css" href="js/bootstrap-4.0.0-dist/css/bootstrap.min.css">
+     <link rel="stylesheet" type="text/css" href="gpsMap/css/map.css">
+</head>
+<body>
+   <div class="navbar">
+        <ul >
+            <li>
+                <img src="./images/basedata-hover.png"/>
+                <span class="text">图层管理</span>
+                <span class="trangle hidden"></span>
+            </li>
+            <li >
+                <img src="./images/basedata-hover.png"/>
+                <span class="text">权限管理</span>
+                <span class="trangle hidden"></span>
+            </li>
+        </ul>
+    </div> 
+
+    <div class="workzone hidden" id="workzone"></div>
+
+    <div class="mapContainer" id="map">
+        <div class="toolMenu" id="toolMenu">
+            <!-- 地图切换 -->
+            <div class="title-common">
+                <span></span>
+                <span>地图</span>
+                <ul class="hidden ul-common">
+                    <li id="tiandi_map_online">
+                        <span></span>
+                        <span>天地图</span>
+                    </li>
+                    <li id="tiandi_wx_online">
+                        <span></span>
+                        <span>卫星图</span>
+                    </li>
+                    <li id="baidu_map_online">
+                        <span></span>
+                        <span>百度</span>
+                    </li>
+                    <li id="google_map_online">
+                        <span></span>
+                        <span>谷歌</span>
+                    </li>
+                    <li id="gaode_map_online">
+                        <span></span>
+                        <span>高德</span>
+                    </li>
+                <!--  <li id="openStreet_map_online">
+                        <span></span>
+                        <span>openStreet</span>
+                    </li> -->
+                <!--  <li id="yahoo_map_online">
+                        <span></span>
+                        <span>yahoo</span>
+                    </li> -->
+                </ul>
+            </div>
+        
+
+            <!-- 组件 -->
+            <div class="title-common">
+                <span></span>
+                <span>功能</span>
+                <ul class="hidden ul-common">
+                    <li id="Circle_search">
+                        <span></span>
+                        <span>周边检索</span>
+                    </li>
+                    <li id="Polygon_search">
+                        <span></span>
+                        <span>任意检索</span>
+                    </li>
+                    <li id="cluster">
+                        <span></span>
+                        <span>汇聚</span>
+                    </li>
+                    <li id="heatMap">
+                        <span></span>
+                        <span>热力图</span>
+                    </li>
+                    <li id="massPoint">
+                        <span></span>
+                        <span>海量点</span>
+                    </li>
+                </ul>
+            </div>
+        
+
+            <!-- 绘制 -->
+            <div class="title-common">
+                    <span></span>
+                    <span>绘制</span>
+                    <ul class="hidden ul-common">
+                        <li id="Point" class='draw'>
+                            <span></span>
+                            <span>点</span>
+                        </li>
+                        <li id="LineString" class='draw'>
+                            <span></span>
+                            <span>线</span>
+                        </li>
+                        <li id="Polygon" class='draw'>
+                            <span></span>
+                            <span>面</span>
+                        </li>
+                    <li id="Circle" class='draw'>
+                            <span></span>
+                            <span>圆</span>
+                        </li>
+                        <li id="Square" class='draw'>
+                            <span></span>
+                            <span>正方形</span>
+                        </li>
+                        <li id="Box" class='draw'>
+                            <span></span>
+                            <span>长方形</span>
+                        </li> 
+                    </ul>
+                </div>             
+
+                <!-- 要素编辑 -->
+            <!--   <div class="title-common">
+                    <span></span>
+                    <span>操作要素</span>
+                    <ul class="hidden ul-common">
+                        <li id="feature-add">
+                            <span></span>
+                            <span>新增</span>
+                        </li>
+                        <li id="feature-edit">
+                            <span></span>
+                            <span>编辑</span>
+                        </li>
+                        <li id="feature-delete">
+                            <span></span>
+                            <span>删除</span>
+                        </li>
+                    </ul>
+                </div> -->
+
+                <!-- 图层管理 -->
+                <div class="title-common">
+                    <span></span>
+                    <span>图层管理</span>
+                    <ul class="hidden ul-common layer-manager">                     
+                        <li ><label ><input type="checkbox" checked="checked" value="3"/>线图层</label></li>
+                        <li ><label ><input type="checkbox" checked="checked" value="2"/>面图层</label></li>
+                        <li ><label ><input type="checkbox" checked="checked" value="1"/>混合图层</label></li>
+                    </ul>
+                </div> 
+                <div id="modifyFeature" class="title-common">
+                    <span></span>
+                    <span>编辑</span>
+                </div> 
+                <div id="deleteFeature" class="title-common">
+                    <span></span>
+                    <span>删除</span>
+                </div>
+
+                <!-- 工具箱 -->
+                <div class="title-common">
+                    <span></span>
+                    <span>工具</span>
+                    <ul class="hidden ul-common">
+                        <li id="length-measure">
+                            <span></span>
+                            <span>长度</span>
+                        </li>
+                        <li id="area-measure">
+                            <span></span>
+                            <span>面积</span>
+                        </li>
+                        <li id="point_label">
+                            <span></span>
+                            <span>点标注</span>
+                        </li>
+                        <li id="polygon_label">
+                            <span></span>
+                            <span>面标注</span>
+                        </li>
+                    <!--     <li id="zoom_out">
+                            <span></span>
+                            <span>框选放大</span>
+                        </li>
+                        <li id="zoom_in">
+                            <span></span>
+                            <span>框选缩小</span>
+                        </li>  -->
+                    </ul>
+                </div>
+
+                <!-- 清除痕迹 -->
+                <div id="clearOtherLayers" class="title-common">
+                    <span></span>
+                    <span>清除</span>
+                </div>
+
+                <!-- 全屏 -->
+            <!--   <div id="fullScreen" class="title-common">
+                    <span></span>
+                    <span>全屏</span>
+                </div> -->
+        </div>
+        <div id="scalebar"></div>
+    </div>
+  <script type="text/javascript" src="js/gps-menghz.js"></script>
+  <script type="text/javascript" src="gpsMap/js/map.js"></script>
+</body>
+</html>
